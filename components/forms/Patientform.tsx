@@ -11,6 +11,7 @@ import { useState } from "react";
 import {UserFormValidation} from '@/lib/validation'
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.action";
+
 export enum FormFieldType {
   INPUT = "input",
   TEXTAREA = "textarea",
@@ -20,7 +21,6 @@ export enum FormFieldType {
   SELECT = "select",
   SKELETON = "skeleton",
 }
-
 
 const Patientform = () => {
   const router=useRouter()
@@ -45,7 +45,7 @@ const Patientform = () => {
        };
        const user=await createUser(userData);
 
-       if(user) router.push(`/patients/${user.id}/register`)
+       if(user) router.push(`/patients/${user.$id}/register`)
 
 
      }

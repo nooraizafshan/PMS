@@ -13,9 +13,9 @@ export const createUser = async (user: CreateUserParams) => {
   } catch (error: any) {
     if (error && error?.code === 409) {
       const documents = await users.list([
-        Query.equal('email', user.email)
+        Query.equal('email', [user.email])
       ]);
-      return documents.users[0]; // Assuming 'users' is the array of user documents
+      return documents?.users[0]; // Assuming 'users' is the array of user documents
     }
   }
 };
